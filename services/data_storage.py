@@ -38,7 +38,7 @@ def initialize_speakers():
     """Initialize the app with 3 speakers"""
     speakers_data = [
         {"name": "Dr. Jimmy Moore", "topic": "An Analysis on the Relationship between Chemokine Gradients and T-Cell Migration"},
-        {"name": "Dr. Oluseyi Ajay", "topic": "The Role of Nanotechnology in Improving the Effigiency of Refrigeration Systems"},
+        {"name": "Dr. Oluseyi Ajayi", "topic": "The Role of Nanotechnology in Improving the Efficiency of Refrigeration Systems"},
         {"name": "Prof. Mfon Ekpo", "topic": "A Linguistic Analysis of Afrobeat Song - Laho"}
     ]
     

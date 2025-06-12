@@ -1,6 +1,8 @@
-from pydantic import BaseModel, EmailStr, field_validator
+from pydantic import BaseModel, EmailStr
 from datetime import datetime
 from typing import Optional
+from uuid import UUID
+
 
 # User Schemas
 class UserBase(BaseModel):
@@ -16,7 +18,7 @@ class UserUpdate(BaseModel):
     is_active: Optional[bool] = None
 
 class User(UserBase):
-    id: int
+    id: UUID
     is_active: bool = True
 
     class Config:
@@ -38,7 +40,7 @@ class EventUpdate(BaseModel):
     is_open: Optional[bool] = None
 
 class Event(EventBase):
-    id: int
+    id: UUID
     is_open: bool = True
 
     class Config:
@@ -57,7 +59,7 @@ class SpeakerUpdate(BaseModel):
     topic: Optional[str] = None
 
 class Speaker(SpeakerBase):
-    id: int
+    id: UUID
 
     class Config:
         from_attributes = True
@@ -74,7 +76,7 @@ class RegistrationUpdate(BaseModel):
     attended: Optional[bool] = None
 
 class Registration(RegistrationBase):
-    id: int
+    id: UUID
     registration_date: datetime
     attended: bool = False
 

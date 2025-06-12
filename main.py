@@ -3,8 +3,19 @@ from fastapi import FastAPI
 from routers import users, events, registrations, speakers
 from services.data_storage import initialize_speakers
 
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup
+    initialize_speakers()
+    yield
+    # Shutdown (if needed)
 
-app = FastAPI()
+app = FastAPI(
+    title="Event Management API",
+    description="A comprehensive event management system with user registration, event tracking, and speaker management",
+    version="1.0.0",
+    lifespan=lifespan
+)
 
 # Include routers
 app.include_router(users.router, prefix="/api/v1/users", tags=["Users"])
@@ -14,5 +25,12 @@ app.include_router(registrations.router, prefix="/api/v1/registrations", tags=["
 
 @app.get("/")
 async def root():
-    return {"message": "Welcome to the Event Management API"}
+    return {"message": "Welcome to Event Management API"}
 
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy"}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
