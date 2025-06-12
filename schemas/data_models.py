@@ -30,6 +30,13 @@ class EventBase(BaseModel):
     location: str
     date: datetime
 
+class Event(EventBase):
+    id: UUID
+    is_open: bool = True
+
+    class Config:
+        from_attributes = True
+
 class EventCreate(EventBase):
     pass
 
@@ -38,13 +45,6 @@ class EventUpdate(BaseModel):
     location: Optional[str] = None
     date: Optional[datetime] = None
     is_open: Optional[bool] = None
-
-class Event(EventBase):
-    id: UUID
-    is_open: bool = True
-
-    class Config:
-        from_attributes = True
 
 # Speaker Schemas
 class SpeakerBase(BaseModel):
