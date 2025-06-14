@@ -1,8 +1,7 @@
 from pydantic import BaseModel, EmailStr
 from datetime import datetime
 from typing import Optional
-from uuid import UUID
-
+from uuid import UUID, uuid4
 
 # User Schemas
 class UserBase(BaseModel):
@@ -30,13 +29,6 @@ class EventBase(BaseModel):
     location: str
     date: datetime
 
-class Event(EventBase):
-    id: UUID
-    is_open: bool = True
-
-    class Config:
-        from_attributes = True
-
 class EventCreate(EventBase):
     pass
 
@@ -45,6 +37,13 @@ class EventUpdate(BaseModel):
     location: Optional[str] = None
     date: Optional[datetime] = None
     is_open: Optional[bool] = None
+
+class Event(EventBase):
+    id: UUID
+    is_open: bool = True
+
+    class Config:
+        from_attributes = True
 
 # Speaker Schemas
 class SpeakerBase(BaseModel):
@@ -66,8 +65,8 @@ class Speaker(SpeakerBase):
 
 # Registration Schemas
 class RegistrationBase(BaseModel):
-    user_id: int
-    event_id: int
+    user_id: UUID
+    event_id: UUID
 
 class RegistrationCreate(RegistrationBase):
     pass
@@ -90,5 +89,3 @@ class RegistrationWithDetails(Registration):
     event_title: str
     event_location: str
     event_date: datetime
-
-    

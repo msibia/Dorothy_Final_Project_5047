@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException, status
 from typing import List
+from uuid import UUID
 from schemas.data_models import User, UserCreate, UserUpdate
 from services import data_storage
 
@@ -18,7 +19,7 @@ async def get_all_users():
     return data_storage.get_all_users()
 
 @router.get("/{user_id}", response_model=User)
-async def get_user(user_id: int):
+async def get_user(user_id: UUID):
     """Get a specific user by ID"""
     user = data_storage.get_user(user_id)
     if not user:
@@ -29,7 +30,7 @@ async def get_user(user_id: int):
     return user
 
 @router.put("/{user_id}", response_model=User)
-async def update_user(user_id: int, user_update: UserUpdate):
+async def update_user(user_id: UUID, user_update: UserUpdate):
     """Update a user"""
     existing_user = data_storage.get_user(user_id)
     if not existing_user:
@@ -43,7 +44,7 @@ async def update_user(user_id: int, user_update: UserUpdate):
     return updated_user
 
 @router.delete("/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
-async def delete_user(user_id: int):
+async def delete_user(user_id: UUID):
     """Delete a user"""
     success = data_storage.delete_user(user_id)
     if not success:
@@ -53,7 +54,7 @@ async def delete_user(user_id: int):
         )
 
 @router.patch("/{user_id}/deactivate", response_model=User)
-async def deactivate_user(user_id: int):
+async def deactivate_user(user_id: UUID):
     """Deactivate a user (set is_active to False)"""
     user = data_storage.deactivate_user(user_id)
     if not user:

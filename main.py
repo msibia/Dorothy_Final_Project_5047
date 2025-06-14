@@ -6,7 +6,12 @@ from services.data_storage import initialize_speakers
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup
-    initialize_speakers()
+    try:
+        initialize_speakers()
+        print("Speakers initialized successfully")
+    except Exception as e:
+        print(f"Error initializing speakers: {e}")
+        raise
     yield
     # Shutdown (if needed)
 
