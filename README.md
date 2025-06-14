@@ -5,18 +5,23 @@ Final Project for AltSchool Python backend engineering class
 
 ## Project Structure
 
-event_management_api/
-├── main.py
-├── requirements.txt
-├── schemas/
-│   └── data_models.py
-├── routes/
-│   ├── users.py
-│   ├── events.py
-│   ├── speakers.py
-│   └── registrations.py
-└── services/
-    └── data_storage.py
+event_management_api/  
+├── main.py  
+├── requirements.txt  
+├── schemas/  
+│   └── data_models.py  
+├── routes/  
+│   ├── users.py  
+│   ├── events.py  
+│   ├── speakers.py  
+│   └── registrations.py  
+└── services/  
+    └── data_storage.py  
+
+## 🛠️ Tech Stack
+- FastAPI (Web framework)
+- Pydantic (Data validation)
+
 
 ## Setup Instructions
 
@@ -83,10 +88,11 @@ event_management_api/
 - Only active users can register
 - Users cannot register twice for the same event
 - Events must be open for registration
-**Proper HTTP status codes** for all operations
-**Modular structure** with separate routes and services
-**Pydantic models** for validation
-**In-memory storage** using dictionaries
-**Automatic API documentation** with FastAPI
+
+**Proper HTTP status codes** for all operations  
+**Modular structure** with separate routes and services  
+**Pydantic models** for validation  
+**In-memory storage** using dictionaries  
+**Automatic API documentation** with FastAPI  
 
 
