@@ -12,9 +12,9 @@ registrations_db: Dict[UUID, Registration] = {}
 def initialize_speakers():
     """Initialize the app with 3 speakers"""
     speakers_data = [
-        {"name": "Dr. Sarah Johnson", "topic": "AI and Machine Learning Trends"},
-        {"name": "Mark Thompson", "topic": "Cloud Architecture Best Practices"},
-        {"name": "Lisa Chen", "topic": "Data Science in Healthcare"}
+        {"name": "Dr. Jimmy Moore", "topic": "An Analysis on the Relationship between Chemokine Gradients and T-Cell Migration"},
+        {"name": "Dr. Oluseyi Ajayi", "topic": "The Role of Nanotechnology in Improving the Efficiency of Refrigeration Systems"},
+        {"name": "Prof. Mfon Ekpo", "topic": "A Linguistic Analysis of Afrobeat Song - Laho"}
     ]
     
     for speaker_data in speakers_data:
